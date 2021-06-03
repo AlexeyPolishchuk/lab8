@@ -1,0 +1,43 @@
+#include <iostream>
+#include <list>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+
+//Создать линейный однонаправленный список из вещественных чисел. Вставить в список число 1.5 после каждого элемента со значением меньше 0
+void task2()
+{
+
+    srand(time(NULL));
+    list<double> Li;
+    for (int i = 0; i < 10; i++)
+    Li.push_back(rand() % 100 - 50);
+
+    list<double>::iterator p = Li.begin();
+    for (; p != Li.end(); ++p)
+    cout << *p << ' ';
+    cout << endl;
+
+    for (p = Li.begin(); p != Li.end();)
+    {
+        if (*p < 0)
+        {
+            Li.insert(++p, 1.5);
+        }
+        else
+            ++p;
+    }
+    cout << endl;
+    for (p = Li.begin(); p != Li.end(); ++p)
+    cout << *p << ' ';
+    cout << endl;
+
+
+}
+
+
+int main()
+{
+    task2();
+}
